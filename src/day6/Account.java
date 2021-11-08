@@ -59,23 +59,20 @@ public class Account {
 
     public static ArrayList<LinkedHashMap> modify(ArrayList<LinkedHashMap> dataList) {
         Scanner scn = new Scanner(System.in);
-        //데이터 수정
-        for (Object dataMap : dataList) {
-            if (dataMap instanceof LinkedHashMap) {
-                LinkedHashMap hm = (LinkedHashMap) dataMap;
-                System.out.print("수정할 항목명>");
-                String item = scn.next();
-                System.out.print("항목의 내용>");
-                String content = scn.next();
+        System.out.print("몇번째 항목을 수정하시겠습니까?>");
+        int num = scn.nextInt()-1;
+        LinkedHashMap hm = (LinkedHashMap) dataList.get(num);
 
-                if (hm.get(item).equals(content)) {
-                    System.out.print("수정할 내용>");
-                    String newContent = scn.next();
-                    //String a = (String) hm.get(item);
-                    hm.put(item, newContent);
-                }
-            }
-        }
+        System.out.print("수정할 항목명 ex)날짜>");
+        String item = scn.next();
+
+        System.out.print("수정할 내용>");
+        String newContent = scn.next();
+        String a = (String) hm.get(item);
+        hm.put(item, newContent);
+
+        System.out.print("수정 되었습니다.");
+
         menu(dataList);
         return dataList;
     }
