@@ -67,15 +67,15 @@ public class Practice {
         System.out.print("수정할 항목명 ex)날짜>");
         String item = scn.next();
 
-        if (item == "날짜"){
-            LinkedHashMap hm2 = (LinkedHashMap) dataList.get(num);
+        if (item.equals("날짜") || item.equals("적요")){
             System.out.print("수정할 내용>");
             String newContent = scn.next();
-            String a = (String) hm.get(item);
+            hm.put(item, newContent);
+        } else if (item.equals("수입") || item.equals("지출")){
+            System.out.print("수정할 내용>");
+            int newContent = scn.nextInt();
             hm.put(item, newContent);
         }
-
-
 
         System.out.print("수정 되었습니다.");
 
