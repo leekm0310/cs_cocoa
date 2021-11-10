@@ -6,6 +6,7 @@ import java.util.*;
 
 public class Account {
 
+    //private Scanner scn = new Scanner(System.in);
     /*public static Date date(){
         LocalDateTime localDateTime = LocalDateTime.now();
         Date date = java.sql.Timestamp.valueOf(localDateTime);
@@ -13,14 +14,16 @@ public class Account {
     }*/
     public static void menu(ArrayList<ArrayList> dataList) {
         Scanner scn = new Scanner(System.in);
-        System.out.println("데이터 입력은 1, 데이터 수정은 2, 데이터 삭제는 3, 데이터 보기는 4를 입력해주세요>");
+        System.out.println("1:데이터 입력, 2:데이터 수정, 3:데이터 삭제, 4:데이터 보기 5:검색 를 입력해주세요>");
         int answer2 = scn.nextInt();
         if (answer2 == 1) {
             input(dataList);
         } else if (answer2 == 2) {
             modify(dataList);
         } else if (answer2 == 3) {
-        delete(dataList);
+            delete(dataList);
+        } else if (answer2 == 4) {
+            search(dataList);
         } else {
             print(dataList);
         }
@@ -105,5 +108,25 @@ public class Account {
         menu(dataList);
     }
 
+    //TODO: 검색을 만들잫ㅎㅎㅎ
+    public static void search(ArrayList<ArrayList> dataList){
+        Scanner scn = new Scanner(System.in);
+        System.out.println("1: 적요");
+        String word = scn.next();
+        for (int i = 0; i < dataList.size(); i++){
+            ArrayList data = dataList.get(i);
+            Iterator<String> it = data.iterator();
+            while (it.hasNext()){
+                String str = it.next();
+                if(word.equals(str)){
+                    System.out.println("있음");
+                }
+            }
+
+        }
+
+
+
+    }
 
 }
