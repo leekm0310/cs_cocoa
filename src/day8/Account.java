@@ -21,11 +21,8 @@ public class Account {
             modify(dataList);
         } else if (answer2 == 3) {
         delete(dataList);
-        /*}
-
         } else {
             print(dataList);
-        }*/
         }
     }
 
@@ -70,11 +67,11 @@ public class Account {
         if (item == 0 || item == 1){
             System.out.print("수정할 내용>");
             String newContent = scn.next();
-            hm.add(item, newContent);
+            hm.set(item, newContent);
         } else if (item == 2 || item == 3){
             System.out.print("수정할 내용>");
             int newContent = scn.nextInt();
-            hm.add(item, newContent);
+            hm.set(item, newContent);
         }
 
         menu(dataList);
@@ -90,4 +87,23 @@ public class Account {
         return dataList;
 
     }
+    public static void print(ArrayList<ArrayList> dataList) {
+        int total = 0;
+        System.out.println("================================================");
+        System.out.println("번호      날짜        적요     수입   지출  소비유형");
+        System.out.println("================================================");
+        for (int i = 0; i < dataList.size(); i++) {
+            System.out.print((i + 1) + "번 ");
+            ArrayList data = dataList.get(i);
+            for (int j = 0; j < data.size(); j++) {
+                System.out.print("  " + data.get(j) + "  ");
+            }
+            int sum = (int)data.get(2) - (int)data.get(3);
+            total += sum;
+        }
+        System.out.println("현재잔액: " + total);
+        menu(dataList);
+    }
+
+
 }
