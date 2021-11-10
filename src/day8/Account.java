@@ -14,7 +14,7 @@ public class Account {
     }*/
     public static void menu(ArrayList<ArrayList> dataList) {
         Scanner scn = new Scanner(System.in);
-        System.out.println("1:데이터 입력, 2:데이터 수정, 3:데이터 삭제, 4:데이터 보기 5:검색 를 입력해주세요>");
+        System.out.println("1:데이터 입력, 2:데이터 수정, 3:데이터 삭제, 4:데이터 검색 5:데이터 보기 를 입력해주세요>");
         int answer2 = scn.nextInt();
         if (answer2 == 1) {
             input(dataList);
@@ -115,14 +115,11 @@ public class Account {
         String word = scn.next();
         for (int i = 0; i < dataList.size(); i++){
             ArrayList data = dataList.get(i);
-            Iterator<String> it = data.iterator();
-            while (it.hasNext()){
-                String str = it.next();
-                if(word.equals(str)){
-                    System.out.println("있음");
+            for (int j = 0; j <= 1; j++){
+                if (word.equals(data.get(j))){
+                    System.out.println(data.get(j));
                 }
             }
-
         }
 
 

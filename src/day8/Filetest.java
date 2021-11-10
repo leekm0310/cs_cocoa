@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
+//todo: 끝난것이 아니다... 정렬, 검색 기능 넣고 수정해보자..
 public class Filetest {
     public static void writeCSV(ArrayList<LinkedHashMap> dataList){
         File csv = new File(".\\src\\K\\ff.csv");

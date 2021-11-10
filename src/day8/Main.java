@@ -8,7 +8,5 @@ public class Main {
         System.out.println("가계부를 시작합니다.");
         ArrayList<ArrayList> dataList = new ArrayList<ArrayList>();
         Account.input(dataList);
-
-
     }
 }
