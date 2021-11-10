@@ -3,6 +3,7 @@ package day6;
 import java.util.*;
 
 public class Account {
+
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         Map member = new LinkedHashMap();
@@ -14,7 +15,6 @@ public class Account {
 
     public static void menu(ArrayList<LinkedHashMap> dataList){
         Scanner scn = new Scanner(System.in);
-
         System.out.println("데이터 입력은 1, 데이터 수정은 2, 데이터 삭제는 3, 데이터 보기는 4를 입력해주세요>");
         int answer2 = scn.nextInt();
         if (answer2 == 1){

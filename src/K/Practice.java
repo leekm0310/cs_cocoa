@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class Practice {
+
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         Map member = new LinkedHashMap();
