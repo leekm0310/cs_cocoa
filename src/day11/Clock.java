@@ -9,19 +9,24 @@ import java.util.Map;
 
 public class Clock {
     public static void main(String[] args) {
-        getTime();
-    }
 
-    public static Map getTime(){
-        LocalTime time = LocalTime.now();
-        int hour = time.get(ChronoField.CLOCK_HOUR_OF_AMPM);
-        int minute = time.getMinute();
+        while(true) {
+            LocalTime time = LocalTime.now();
+            int hour = time.get(ChronoField.CLOCK_HOUR_OF_AMPM);
+            int minute = time.getMinute();
 
-        Map hm = new HashMap();
-        hm.put("hour", hour);
-        hm.put("minute", minute);
-        change(hm);
-        return hm;
+            Map hm = new HashMap();
+            hm.put("hour", hour);
+            hm.put("minute", minute);
+            change(hm);
+
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     public static void change(Map map){
@@ -31,7 +36,7 @@ public class Clock {
         String[] hours1 = {"","열"};
         String[] hours2 = {"한", "두", "세", "네", "다섯", "여섯", "일곱", "여덟", "아홉"};
         String[] min1 = {"","","이","삼","사","오"};
-        String[] min2 = {"일","이","삼","사","오","육","칠","팔","구","십"};
+        String[] min2 = {"","일","이","삼","사","오","육","칠","팔","구","십"};
 
 
         int h1 = hour / 10;
@@ -45,11 +50,11 @@ public class Clock {
 
         if (m1 != 0){
             String min_first = min1[m1] + "십";
-            String min_second = min2[m2 - 1];
-            System.out.println(min_first + min_second + "분");
+            String min_second = min2[m2];
+            System.out.println(min_first + min_second +"분");
         } else {
             String min_first = min1[m1];
-            String min_second = min2[m2 - 1];
+            String min_second = min2[m2];
             System.out.println(min_first + min_second + "분");
         }
     }
