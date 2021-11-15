@@ -116,14 +116,8 @@ public class Account {
         for (int i = 0; i < dataList.size(); i++){
             ArrayList data = dataList.get(i);
             for (int j = 0; j <= 1; j++){
-                if (word.equals(data.get(j))){
-                    System.out.println(data.get(j));
-                }
+
+            }
             }
         }
-
-
-
-    }
-
 }

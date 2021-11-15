@@ -1,2 +1,4 @@
-package day9_AccountBook;public class Main {
+package day9_AccountBook;
+
+public class Main {
 }
