@@ -8,10 +8,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Clock {
-//    public static void main(String[] args) {
-//        Clock c = new Clock();
-//        c.getTime();
-//    }
+
     public void getTime(){
         Scanner scn = new Scanner(System.in);
 
@@ -21,7 +18,6 @@ public class Clock {
         String input = scn.next();
         t.interrupt();
     }
-
 }
 
 class Th1 extends Thread{
