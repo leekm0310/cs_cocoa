@@ -6,10 +6,11 @@ public class Shell {
 
 
     public static void main(String[] args) {
-       Copy();
+
+        copy();
     }
 
-    public static void Read() {
+    public static void read() {
         String pathName = "C:\\Users\\user\\Downloads\\practice";
         File file = new File(pathName);
         System.out.println(pathName + " is exist?? " + file.exists());
@@ -20,7 +21,7 @@ public class Shell {
         }
     }
 
-    public static void Copy() {
+    public static void copy() {
         String pathName = "C:\\Users\\user\\Downloads\\practice\\test.txt";
         String copyName = "C:\\Users\\user\\Downloads\\practice\\test2.txt";
         File file = new File(pathName);
@@ -36,9 +37,7 @@ public class Shell {
             }
             fis.close();
             fos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

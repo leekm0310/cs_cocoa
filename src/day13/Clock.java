@@ -1,18 +1,15 @@
-package day11;
-
+package day13;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoField;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Clock {
-    public static void main(String[] args) {
-        getTime();
-    }
 
-    public static void getTime() {
+    public void getTime() {
 
         Map hm = new HashMap();
 
@@ -31,7 +28,7 @@ public class Clock {
         }
     }
 
-    public static void change(Map map){
+    public void change(Map map){
 
         int hour = (int) map.get("hour");
         int minute = (int) map.get("minute");
