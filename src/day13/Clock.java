@@ -8,12 +8,29 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Clock {
+//    public static void main(String[] args) {
+//        Clock c = new Clock();
+//        c.getTime();
+//    }
+    public void getTime(){
+        Scanner scn = new Scanner(System.in);
 
-    public void getTime() {
+        Th1 t = new Th1();
+        t.start();
+
+        String input = scn.next();
+        t.interrupt();
+    }
+
+}
+
+class Th1 extends Thread{
+
+    public void run() {
 
         Map hm = new HashMap();
 
-        while(true) {
+        while(!isInterrupted()) {
             LocalTime time = LocalTime.now();
             int hour = time.get(ChronoField.CLOCK_HOUR_OF_AMPM);
             int minute = time.getMinute();
@@ -21,9 +38,9 @@ public class Clock {
             hm.put("minute", minute);
             change(hm);
             try {
-                Thread.sleep(30000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                interrupt();
             }
         }
     }

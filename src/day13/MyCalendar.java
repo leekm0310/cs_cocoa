@@ -28,7 +28,6 @@ public class MyCalendar {
     }
 
     public void show(){
-
         System.out.println("일\t월\t화\t수\t목\t금\t토");
         int day = 1;
         switch (startWeek){
@@ -48,5 +47,6 @@ public class MyCalendar {
             }
             countDay++;
         }
+
     }
 }
