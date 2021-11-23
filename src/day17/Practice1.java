@@ -18,7 +18,8 @@ public class Practice1 {
         b.setSize(10,10);
 
         Label contents = new Label("contents: ");
-        contents.setBounds(350,350,10,10);
+        //contents.setBounds(350,350,10,10);
+        contents.setSize(350,100);
 
         b.addActionListener(new ActionListener() {
             @Override
