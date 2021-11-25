@@ -15,11 +15,13 @@ class G3 extends Frame {
     private Graphics gImg = null;
     private Button b1;
     private Button b2;
+    private Button b3;
     private int shape;
 
     static class Shape{
         static final int Line = 1;
         static final int Circle = 2;
+        static final int Rectangle = 3;
     }
 
     public G3(String title){
@@ -44,13 +46,15 @@ class G3 extends Frame {
             }
         });
 
+
         b1 = new Button("line");
         b2 = new Button("circle");
+        b3 = new Button("rectangle");
         b1.addActionListener(this::actionPerformed);
         b2.addActionListener(this::actionPerformed);
-        add(b1);
-        add(b2);
+        b3.addActionListener(this::actionPerformed);
 
+        addComponent();
 
         setVisible(true);
         img = createImage(500, 500);
@@ -59,7 +63,11 @@ class G3 extends Frame {
 
     }
 
-
+    void addComponent(){
+        add(b1);
+        add(b2);
+        add(b3);
+    }
 
 
     public void paint(Graphics g){
@@ -69,7 +77,13 @@ class G3 extends Frame {
         if (shape == Shape.Circle) {
             g.drawOval(Math.min(x1,x2), Math.min(y1,y2), Math.abs(x1 - x2), Math.abs(y1 - y2));
         }
+        if (shape == Shape.Rectangle){
+            g.drawRect(Math.min(x1,x2), Math.min(y1,y2), Math.abs(x1 - x2), Math.abs(y1 - y2));
+        }
+    }
 
+    public void update(Graphics g){
+        paint(g);
     }
 
     private class Mouse extends MouseAdapter{
@@ -93,7 +107,10 @@ class G3 extends Frame {
         if (e.getSource() == b2){
             shape = Shape.Circle;
         }
-        repaint();
+        if (e.getSource() == b3){
+            shape = Shape.Rectangle;
+        }
+      // repaint();
 
     }
 }
