@@ -13,6 +13,7 @@ class G3 extends Frame {
     private boolean isdrawing = false;
     private Image img = null;
     private Graphics gImg = null;
+    private Button b1;
 
     public G3(String title){
         super(title);
@@ -22,8 +23,9 @@ class G3 extends Frame {
                 System.exit(0);
             }
         });
-        setBounds(1000,1000,1000,1000);
-        setVisible(true);
+        setBounds(500,500,1000,1000);
+        setLayout(new FlowLayout());
+
         addMouseListener(new Mouse());
         addMouseMotionListener(new MouseAdapter() {
             @Override
@@ -35,14 +37,23 @@ class G3 extends Frame {
             }
         });
 
+        b1 = new Button("line");
+        add(b1);
+
+
+        setVisible(true);
         img = createImage(500, 500);
         gImg = img.getGraphics();
         repaint();
+
     }
 
+
+
+
     public void paint(Graphics g){
-        if (img == null) return;
-        g.drawImage(img, x1, x2, this);
+
+        g.drawLine(x1,y1,x2,y2);
     }
 
     private class Mouse extends MouseAdapter{
@@ -57,5 +68,9 @@ class G3 extends Frame {
             y2 = e.getY();
             repaint();
         }
+    }
+
+    public void actionPerformed(ActionEvent e){
+
     }
 }
