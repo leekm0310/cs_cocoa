@@ -14,6 +14,13 @@ class G3 extends Frame {
     private Image img = null;
     private Graphics gImg = null;
     private Button b1;
+    private Button b2;
+    private int shape;
+
+    static class Shape{
+        static final int Line = 1;
+        static final int Circle = 2;
+    }
 
     public G3(String title){
         super(title);
@@ -38,13 +45,17 @@ class G3 extends Frame {
         });
 
         b1 = new Button("line");
+        b2 = new Button("circle");
+        b1.addActionListener(this::actionPerformed);
+        b2.addActionListener(this::actionPerformed);
         add(b1);
+        add(b2);
 
 
         setVisible(true);
         img = createImage(500, 500);
         gImg = img.getGraphics();
-        repaint();
+//        repaint();
 
     }
 
@@ -52,8 +63,13 @@ class G3 extends Frame {
 
 
     public void paint(Graphics g){
+        if (shape == Shape.Line){
+            g.drawLine(x1,y1,x2,y2);
+        }
+        if (shape == Shape.Circle) {
+            g.drawOval(Math.min(x1,x2), Math.min(y1,y2), Math.abs(x1 - x2), Math.abs(y1 - y2));
+        }
 
-        g.drawLine(x1,y1,x2,y2);
     }
 
     private class Mouse extends MouseAdapter{
@@ -71,6 +87,13 @@ class G3 extends Frame {
     }
 
     public void actionPerformed(ActionEvent e){
+        if (e.getSource() == b1){
+            shape = Shape.Line;
+        }
+        if (e.getSource() == b2){
+            shape = Shape.Circle;
+        }
+        repaint();
 
     }
 }
