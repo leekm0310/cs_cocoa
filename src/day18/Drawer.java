@@ -3,7 +3,7 @@ package day18;
 import java.awt.*;
 import java.awt.event.*;
 
-class G3 extends Frame {
+class Drawer extends Frame {
     private int x1;
     private int y1;
     private int x2;
@@ -26,7 +26,7 @@ class G3 extends Frame {
         static final int pen = 4;
     }
 
-    public G3(String title){
+    public Drawer(String title){
         super(title);
         addWindowListener(new WindowAdapter() {
             @Override
