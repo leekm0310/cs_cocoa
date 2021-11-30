@@ -107,10 +107,9 @@ class Tycoon {
 
     public boolean endMixing() throws IOException {
 
-
 //        choice = (List) liqMenus.get(pick);
         choice =  Arrays.asList(liqMenus.get(pick));
-        System.out.println("손님의 주문 " + pick + ":" + liqMenus.get(pick));
+        System.out.println("손님의 주문 " + pick + ":" + choice);
         System.out.println("내가 만든 칵테일" + result);
         boolean r = Arrays.equals(choice.toArray(), result.toArray());
         result.clear();
