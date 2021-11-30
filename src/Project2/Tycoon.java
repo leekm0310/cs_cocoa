@@ -1,10 +1,13 @@
 package Project2;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 class Tycoon {
     private int round = 1;
-    private HashMap liqMenus = new HashMap();;
+    private HashMap<String, String[]> liqMenus = new HashMap<>();
     private String mix;
     private String base;
     private Scanner sc = new Scanner(System.in);
@@ -14,25 +17,47 @@ class Tycoon {
     private int myMoney = 1000;
 
 
-    public HashMap makeMenu() {
-        List c1 = new ArrayList<String>();
-        c1.add("소주");
-        c1.add("콜라");
-        liqMenus.put("칵테일1",c1);
-        List c2 = new ArrayList<String>();
-        c2.add("진");
-        c2.add("탄산수");
-        liqMenus.put("칵테일2",c2);
-        List c3 = new ArrayList<String>();
-        c3.add("보드카");
-        c3.add("탄산수");
-        liqMenus.put("칵테일3",c3);
-        List c4 = new ArrayList<String>();
-        c4.add("위스키");
-        c4.add("탄산수");
-        liqMenus.put("칵테일4",c4);
-        return liqMenus;
+//    public HashMap makeMenu() {
+//        List c1 = new ArrayList<String>();
+//        c1.add("소주");
+//        c1.add("콜라");
+//        liqMenus.put("칵테일1",c1);
+//        List c2 = new ArrayList<String>();
+//        c2.add("진");
+//        c2.add("탄산수");
+//        liqMenus.put("칵테일2",c2);
+//        List c3 = new ArrayList<String>();
+//        c3.add("보드카");
+//        c3.add("탄산수");
+//        liqMenus.put("칵테일3",c3);
+//        List c4 = new ArrayList<String>();
+//        c4.add("위스키");
+//        c4.add("탄산수");
+//        liqMenus.put("칵테일4",c4);
+//        return liqMenus;
+//
+//    }
 
+    public HashMap makeMenu() throws IOException {
+        String filePath = "test.txt";
+
+        String line;
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        while ((line = reader.readLine()) != null)
+        {
+            String[] parts = line.split(":", 2);
+            if (parts.length >= 2)
+            {
+                String key = parts[0];
+                String[] value = parts[1].split(",");
+
+                liqMenus.put(key, value);
+            } else {
+                System.out.println("ignoring line: " + line);
+            }
+        }
+        reader.close();
+        return liqMenus;
     }
 
     public List<String> liqMenu() {
@@ -48,11 +73,11 @@ class Tycoon {
 
     public String shuffle(List<String> s){
         Collections.shuffle(s);
-        pick = s.get(0);
+        pick = (String) s.get(0);
         return pick;
     }
 
-    public void starts() {
+    public void starts() throws IOException {
         makeMenu();
         List<String> liqList = liqMenu();
         List choice = new ArrayList();
@@ -63,7 +88,7 @@ class Tycoon {
         addSteps();
     }
 
-    public void addSteps()  {
+    public void addSteps() throws IOException {
         String yn = sc.next();
         if (yn.equals("y")) {
             mixing();
@@ -75,14 +100,16 @@ class Tycoon {
         }
     }
 
-    public void mixing()  {
+    public void mixing() throws IOException {
         chooseBase();
         addSteps();
     }
 
-    public boolean endMixing() {
+    public boolean endMixing() throws IOException {
 
-        choice = (List) liqMenus.get(pick);
+
+//        choice = (List) liqMenus.get(pick);
+        choice =  Arrays.asList(liqMenus.get(pick));
         System.out.println("손님의 주문 " + pick + ":" + liqMenus.get(pick));
         System.out.println("내가 만든 칵테일" + result);
         boolean r = Arrays.equals(choice.toArray(), result.toArray());
@@ -91,7 +118,7 @@ class Tycoon {
         return r;
     }
 
-    public void judge(boolean r)  {
+    public void judge(boolean r) throws IOException {
         if (r == true){
             myMoney = myMoney + 500;
             System.out.println("성공! 500원을 획득했습니다");
@@ -103,7 +130,7 @@ class Tycoon {
         j2();
     }
 
-    public void j2() {
+    public void j2() throws IOException {
         if (myMoney <= 0){
             System.out.println("게임오버");
         } else {
