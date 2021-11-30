@@ -1,11 +1,9 @@
 package Project2;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 
 class Tycoon {
-    private int round;
+    private int round = 1;
     private HashMap liqMenus = new HashMap();;
     private String mix;
     private String base;
@@ -59,14 +57,13 @@ class Tycoon {
         List<String> liqList = liqMenu();
         List choice = new ArrayList();
         String pick = shuffle(liqList);
+        System.out.println("============= "+ round+ " 라운드 ==============");
         System.out.println("손님이 " + pick + "을/를 주문했습니다.");
         System.out.println("재료선택은 y/ 패스는 n");
         addSteps();
-
     }
 
     public void addSteps()  {
-
         String yn = sc.next();
         if (yn.equals("y")) {
             mixing();
@@ -76,7 +73,6 @@ class Tycoon {
             System.out.println("잘못 누르셨습니다");
             addSteps();
         }
-
     }
 
     public void mixing()  {
@@ -87,8 +83,8 @@ class Tycoon {
     public boolean endMixing() {
 
         choice = (List) liqMenus.get(pick);
-        System.out.println("==============" + pick + ":" + liqMenus.get(pick));
-        System.out.println("==============" + result);
+        System.out.println("손님의 주문 " + pick + ":" + liqMenus.get(pick));
+        System.out.println("내가 만든 칵테일" + result);
         boolean r = Arrays.equals(choice.toArray(), result.toArray());
         result.clear();
         judge(r);
@@ -99,6 +95,7 @@ class Tycoon {
         if (r == true){
             myMoney = myMoney + 500;
             System.out.println("성공! 500원을 획득했습니다");
+            System.out.println("현재 소지금: " + myMoney);
         } else {
             myMoney = myMoney - 1000;
             System.out.println("실패! 1000원을 잃었습니다");
@@ -110,6 +107,7 @@ class Tycoon {
         if (myMoney <= 0){
             System.out.println("게임오버");
         } else {
+            round ++;
             starts();
         }
 
@@ -121,29 +119,24 @@ class Tycoon {
         int num1 = sc.nextInt();
         if (num1 == 1){
             base = "소주";
-            result.add(base);
         } else if (num1 == 2){
             base = "진";
-            result.add(base);
         } else if (num1 == 3){
             base = "보드카";
-            result.add(base);
         } else if (num1 == 4){
             base = "위스키";
-            result.add(base);
         } else if (num1 == 5){
-            mix = "콜라";
-            result.add(mix);
+            base = "콜라";
         } else if (num1 == 6){
-            mix = "탄산수";
-            result.add(mix);
+            base = "탄산수";
         } else if (num1 == 7){
-            mix = "라임";
-            result.add(mix);
+            base = "라임";
         } else if (num1 == 8){
-            mix = "레몬";
-            result.add(mix);
+            base = "레몬";
         }
+        result.add(base);
+        System.out.println(base +"를/을 추가했습니다");
+        System.out.println("재료를 더 추가할까요? y/n");
         return result;
     }
 
