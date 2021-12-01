@@ -1,22 +1,20 @@
 package Project2;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
 class Tycoon {
     private int round = 1;
     private HashMap<String, String[]> liqMenus;
-    private BarMenu barMenu;
     private String mix;
     private String base;
     private Scanner sc = new Scanner(System.in);
     private ArrayList<String> result = new ArrayList<>();
     private String pick;
-    private List choice = new ArrayList<>();
+    private List choice;
     private int myMoney = 1000;
-    private BarMenu b;
+    private BarMenu barMenu = new BarMenu();
+
 
 
     public List<String> liqMenu() {
@@ -37,9 +35,8 @@ class Tycoon {
     }
 
     public void starts() throws IOException {
-        liqMenus = b.init();
+        liqMenus = barMenu.init();
         List<String> liqList = liqMenu();
-        List choice = new ArrayList();
         String pick = shuffle(liqList);
         System.out.println("============= "+ round+ " 라운드 ==============");
         System.out.println("손님이 " + pick + "을/를 주문했습니다.");
@@ -50,6 +47,9 @@ class Tycoon {
     public void addSteps() throws IOException {
         String yn = sc.next();
         if (yn.equals("y")) {
+            mixing();
+        } else if(yn.equals("r")) {
+            result.clear();
             mixing();
         } else if (yn.equals("n")){
             endMixing();
@@ -66,10 +66,9 @@ class Tycoon {
 
     public boolean endMixing() throws IOException {
 
-//        choice = (List) liqMenus.get(pick);
         choice =  Arrays.asList(liqMenus.get(pick));
         System.out.println("손님의 주문 " + pick + ":" + choice);
-        System.out.println("내가 만든 칵테일" + result);
+        System.out.println("내가 만든 칵테일: " + result);
         boolean r = Arrays.equals(choice.toArray(), result.toArray());
         result.clear();
         judge(r);
@@ -121,8 +120,9 @@ class Tycoon {
             base = "레몬";
         }
         result.add(base);
-        System.out.println(base +"를/을 추가했습니다");
-        System.out.println("재료를 더 추가할까요? y/n");
+        System.out.println(base +"를/을 추가했습니다. 지금까지 선택한 재료: " + result );
+        System.out.println("재료를 더 추가할까요? y/n 다시 만들기는 r");
+
         return result;
     }
 
