@@ -14,6 +14,7 @@ class Tycoon {
     private List choice;
     private int myMoney = 1000;
     private BarMenu barMenu = new BarMenu();
+    private Filetest filetest = new Filetest();
 
 
 
@@ -85,7 +86,13 @@ class Tycoon {
             System.out.println("실패! 1000원을 잃었습니다");
             System.out.println("현재 소지금: " + myMoney);
         }
-        j2();
+        System.out.println("저장하시겠습니까?");
+        String ask = sc.next();
+        if (ask.equals("y")){
+            filetest.save(round);
+        } else {
+            j2();
+        }
     }
 
     public void j2() throws IOException {
