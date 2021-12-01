@@ -7,7 +7,8 @@ import java.util.*;
 
 class Tycoon {
     private int round = 1;
-    private HashMap<String, String[]> liqMenus = new HashMap<>();
+    private HashMap<String, String[]> liqMenus;
+    private BarMenu barMenu;
     private String mix;
     private String base;
     private Scanner sc = new Scanner(System.in);
@@ -15,50 +16,8 @@ class Tycoon {
     private String pick;
     private List choice = new ArrayList<>();
     private int myMoney = 1000;
+    private BarMenu b;
 
-
-//    public HashMap makeMenu() {
-//        List c1 = new ArrayList<String>();
-//        c1.add("소주");
-//        c1.add("콜라");
-//        liqMenus.put("칵테일1",c1);
-//        List c2 = new ArrayList<String>();
-//        c2.add("진");
-//        c2.add("탄산수");
-//        liqMenus.put("칵테일2",c2);
-//        List c3 = new ArrayList<String>();
-//        c3.add("보드카");
-//        c3.add("탄산수");
-//        liqMenus.put("칵테일3",c3);
-//        List c4 = new ArrayList<String>();
-//        c4.add("위스키");
-//        c4.add("탄산수");
-//        liqMenus.put("칵테일4",c4);
-//        return liqMenus;
-//
-//    }
-
-    public HashMap makeMenu() throws IOException {
-        String filePath = "test.txt";
-
-        String line;
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
-        while ((line = reader.readLine()) != null)
-        {
-            String[] parts = line.split(":", 2);
-            if (parts.length >= 2)
-            {
-                String key = parts[0];
-                String[] value = parts[1].split(",");
-
-                liqMenus.put(key, value);
-            } else {
-                System.out.println("ignoring line: " + line);
-            }
-        }
-        reader.close();
-        return liqMenus;
-    }
 
     public List<String> liqMenu() {
         List liqList = new ArrayList<String>();
@@ -78,7 +37,7 @@ class Tycoon {
     }
 
     public void starts() throws IOException {
-        makeMenu();
+        liqMenus = b.init();
         List<String> liqList = liqMenu();
         List choice = new ArrayList();
         String pick = shuffle(liqList);
@@ -125,6 +84,7 @@ class Tycoon {
         } else {
             myMoney = myMoney - 1000;
             System.out.println("실패! 1000원을 잃었습니다");
+            System.out.println("현재 소지금: " + myMoney);
         }
         j2();
     }
