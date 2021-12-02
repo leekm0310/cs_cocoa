@@ -12,7 +12,7 @@ class Tycoon {
     private ArrayList<String> result = new ArrayList<>();
     private String pick;
     private List choice;
-    private int myMoney = 1000;
+    private int myMoney = 1500;
     private BarMenu barMenu = new BarMenu();
     private Filetest filetest = new Filetest();
 
@@ -79,17 +79,16 @@ class Tycoon {
     public void judge(boolean r) throws IOException {
         if (r == true){
             myMoney = myMoney + 500;
-            System.out.println("성공! 500원을 획득했습니다");
-            System.out.println("현재 소지금: " + myMoney);
+            System.out.println("성공! 500원을 획득했습니다. 현재 소지금: " + myMoney);
         } else {
             myMoney = myMoney - 1000;
-            System.out.println("실패! 1000원을 잃었습니다");
-            System.out.println("현재 소지금: " + myMoney);
+            System.out.println("실패! 1000원을 잃었습니다. 현재 소지금: " + myMoney);
         }
-        System.out.println("저장하시겠습니까?");
+        System.out.println("저장하고 나가기 q/ 계속 진행 g");
         String ask = sc.next();
-        if (ask.equals("y")){
-            filetest.save(round);
+        if (ask.equals("q")){
+            filetest.save(round, myMoney);
+            System.out.println("===========저장 완료===========");
         } else {
             j2();
         }

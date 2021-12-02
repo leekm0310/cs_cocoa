@@ -1,20 +1,28 @@
 package Project2;
 
 import java.io.*;
-import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
+
 
 
 public class Filetest {
 
-    public void save(int round) throws IOException {
+    SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+    public void save(int round, int myMoney) throws IOException {
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("save.txt"), "UTF-8"));
+                new FileOutputStream("save.txt", true), "UTF-8"));
 
-        LocalDateTime now = LocalDateTime.now();
+        String time = sdf1.format(System.currentTimeMillis());
 
-        bw.write(round);
-        bw.write(String.valueOf(now));
+
+        bw.write(time);
+        bw.append(" ");
+        bw.write(String.valueOf(round));
+        bw.append(" ");
+        bw.write(String.valueOf(myMoney));
+        bw.write("\n");
         bw.close();
 
 //        BufferedWriter bw = new BufferedWriter(new FileWriter("save.txt", true));
@@ -31,7 +39,7 @@ public class Filetest {
         FileReader fileReader = new FileReader(file);
         int cur = 0;
         while ((cur = fileReader.read()) != -1){
-            System.out.println((char)cur);
+            System.out.print((char)cur);
         }
         fileReader.close();
     }
