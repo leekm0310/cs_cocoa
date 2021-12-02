@@ -106,7 +106,7 @@ class Tycoon {
 
     public List chooseBase(){
         System.out.println("재료를 골라주세요");
-        System.out.println("1.소주 2.진 3.보드카 4.위스키 5.콜라 6.탄산수 7.라임 8.레몬");
+        System.out.println("1.소주 2.진 3.보드카 4.위스키 5.콜라 6.토닉워터 7.라임 8.레몬");
         int num1 = sc.nextInt();
         if (num1 == 1){
             base = "소주";
@@ -119,7 +119,7 @@ class Tycoon {
         } else if (num1 == 5){
             base = "콜라";
         } else if (num1 == 6){
-            base = "탄산수";
+            base = "토닉워터";
         } else if (num1 == 7){
             base = "라임";
         } else if (num1 == 8){
