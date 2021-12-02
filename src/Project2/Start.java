@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Start {
     public static void main(String[] args) throws IOException {
         Tycoon t = new Tycoon();
-        t.starts();
+       // t.starts();
+        t.beforestart();
     }
 }

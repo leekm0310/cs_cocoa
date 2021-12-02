@@ -1,8 +1,11 @@
 package Project2;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-
+import java.util.List;
 
 
 public class Filetest {
@@ -25,16 +28,9 @@ public class Filetest {
         bw.write("\n");
         bw.close();
 
-//        BufferedWriter bw = new BufferedWriter(new FileWriter("save.txt", true));
-//        PrintWriter pw = new PrintWriter(bw, true);
-//
-//        int r = round;
-//
-//        pw.write(r);
-//        pw.close();
     }
 
-    public static void load() throws IOException {
+    public void loadshow() throws IOException {
         File file = new File("save.txt");
         FileReader fileReader = new FileReader(file);
         int cur = 0;
@@ -44,7 +40,16 @@ public class Filetest {
         fileReader.close();
     }
 
-    public static void main(String[] args) throws IOException {
-        load();
+    public int[] load(int l) throws IOException {
+        Path path = Paths.get("save.txt");
+        List<String> allLines = Files.readAllLines(path);
+        String line = allLines.get(l);
+        String[] parts = new String[4];
+        parts = line.split(" ");
+        int[] cho = new int[2];
+        cho[0] = Integer.parseInt(parts[2]);
+        cho[1] = Integer.parseInt(parts[3]);
+        return cho;
     }
+
 }

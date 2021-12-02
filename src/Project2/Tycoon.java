@@ -132,4 +132,31 @@ class Tycoon {
         return result;
     }
 
+
+    public int[] loadone() throws IOException {
+        System.out.println("==============저장 목록==============");
+        filetest.loadshow();
+        System.out.println("몇번째 파일을 불러올까요?");
+        int l = sc.nextInt();
+        int[] cho = filetest.load(l);
+        return cho;
+    }
+
+    public void loadtest() throws IOException {
+        int[] cho =  loadone();
+        round = cho[0] + 1;
+        myMoney = cho[1];
+    }
+
+    public void beforestart() throws IOException {
+        System.out.println("불러오기는 1, 새게임은 2");
+        int choice = sc.nextInt();
+        if (choice == 1){
+            loadtest();
+            starts();
+        } else {
+            starts();
+        }
+    }
+
 }
