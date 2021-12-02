@@ -39,7 +39,7 @@ class Tycoon {
         liqMenus = barMenu.init();
         List<String> liqList = liqMenu();
         String pick = shuffle(liqList);
-        System.out.println("============= "+ round+ " 라운드 ==============");
+        System.out.println("=========== "+ round+ " 라운드 ============");
         System.out.println("손님이 " + pick + "을/를 주문했습니다.");
         System.out.println("재료선택은 y/ 패스는 n");
         addSteps();
@@ -126,8 +126,8 @@ class Tycoon {
             base = "레몬";
         }
         result.add(base);
-        System.out.println(base +"를/을 추가했습니다. 지금까지 선택한 재료: " + result );
-        System.out.println("재료를 더 추가할까요? y/n 다시 만들기는 r");
+        System.out.println(base +"을/를 추가했습니다. 지금까지 선택한 재료: " + result );
+        System.out.println("재료 추가 y / 서빙 n / 다시 만들기는 r");
 
         return result;
     }
@@ -149,6 +149,12 @@ class Tycoon {
     }
 
     public void beforestart() throws IOException {
+        System.out.println("…─━☆‥…─━☆‥…─━☆‥…──━☆──━☆──━☆");
+        System.out.println("…─━☆‥…─━☆‥…─━☆‥…──━☆──━☆──━☆");
+        System.out.println("========칵테일바 타이쿤=========");
+        System.out.println("…─━☆‥…─━☆ ver 1.0 ‥…──━☆──━☆");
+        System.out.println("…─━☆‥…─━☆‥…─━☆‥…──━☆──━☆──━☆");
+        System.out.println();
         System.out.println("불러오기는 1, 새게임은 2");
         int choice = sc.nextInt();
         if (choice == 1){
