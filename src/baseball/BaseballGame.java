@@ -17,6 +17,7 @@ public class BaseballGame {
 
     //내숫자
     public int[] myBall(){
+        System.out.println("숫자를 입력해주세요 ex)123 : ");
         Scanner scn = new Scanner(System.in);
         int[] myBall = new int[3];
         String myB = scn.next();
@@ -34,7 +35,6 @@ public class BaseballGame {
         int[] myBall = myBall();
 //        int strike = 0;
 //        int ball = 0;
-//        int nothing = 0;
         int[] compare = new int[3];
         boolean result;
 
